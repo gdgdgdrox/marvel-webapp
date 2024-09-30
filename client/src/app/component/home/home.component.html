@@ -1,0 +1,6 @@
+<form (ngSubmit)="searchCharacter(form)" #form="ngForm">
+    <label for="characterName">Search a Marvel Character</label>
+    <br>
+    <input type="text" name="characterName" id="characterName" ngModel required>
+    <button [disabled]="form.invalid">search</button>
+</form>

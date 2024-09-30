@@ -1,0 +1,24 @@
+@if (loading){
+    <p>Loading...</p>
+}
+@else {
+    @if(characters.length > 0){
+        Marvel Characters
+        <div>
+            <ul>
+                @for (character of paginatedCharacters; track character.id){
+                    <li [routerLink]="['/character',character.id]">
+                        {{character.name}}
+                    </li>
+                }
+            </ul>
+            <div>
+                <button (click)="previousPage()" [disabled]="currentPage === 0 ? true : false">previous</button>
+                <button (click)="nextPage()" [disabled]="currentPage >= Math.ceil(characters.length / pageSize) - 1">next</button>
+            </div>
+        </div>
+    }
+    @else{
+        <h4>No characters found.. </h4>
+    }
+}
